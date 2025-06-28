@@ -1,0 +1,91 @@
+# This blueprint deploys n8n workflow automation tool with a PostgreSQL database
+
+services:
+  # n8n Web Service
+  - type: web
+    runtime: docker
+    name: n8n-app
+    repo: https://github.com/n8n-io/n8n.git
+    region: oregon  # Change to your preferred region
+    plan: starter   # Upgrade to standard/pro as needed
+    autoDeploy: true
+    healthCheckPath: /healthz
+    
+    # Docker configuration for n8n
+    dockerCommand: n8n start
+    
+    # Environment variables for n8n
+    envVars:
+      # Database connection
+      - key: DB_TYPE
+        value: postgresdb
+      - key: DB_POSTGRESDB_DATABASE
+        fromDatabase:
+          name: n8n-database
+          property: database
+      - key: DB_POSTGRESDB_HOST
+        fromDatabase:
+          name: n8n-database
+          property: host
+      - key: DB_POSTGRESDB_PORT
+        fromDatabase:
+          name: n8n-database
+          property: port
+      - key: DB_POSTGRESDB_USER
+        fromDatabase:
+          name: n8n-database
+          property: user
+      - key: DB_POSTGRESDB_PASSWORD
+        fromDatabase:
+          name: n8n-database
+          property: password
+      
+      # n8n Configuration
+      - key: N8N_HOST
+        value: 0.0.0.0
+      - key: N8N_PORT
+        value: 10000
+      - key: N8N_PROTOCOL
+        value: https
+      - key: WEBHOOK_URL
+        value: https://your-n8n-app.onrender.com  # Update with your actual domain
+      
+      # Security - Generate secure encryption key
+      - key: N8N_ENCRYPTION_KEY
+        generateValue: true
+      
+      # Optional: Set timezone
+      - key: GENERIC_TIMEZONE
+        value: UTC
+      
+      # Optional: Enable metrics
+      - key: N8N_METRICS
+        value: true
+      
+      # Optional: Configure user management
+      - key: N8N_USER_MANAGEMENT_DISABLED
+        value: false
+      
+      # Log level
+      - key: N8N_LOG_LEVEL
+        value: info
+    
+    # Custom domains (optional - update with your domain)
+    # domains:
+    #   - your-custom-domain.com
+
+# PostgreSQL Database
+databases:
+  - name: n8n-database
+    databaseName: n8n_db
+    user: n8n_user
+    plan: starter  # Upgrade to basic or standard as needed
+    
+    # IP Allow List - Allow connections from anywhere (adjust as needed)
+    ipAllowList:
+      - source: 0.0.0.0/0
+        description: Allow all connections
+    
+    # Optional: Add read replicas for better performance
+    # readReplicas:
+    #   - name: n8n-database-replica 
