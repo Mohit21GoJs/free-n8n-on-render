@@ -7,7 +7,7 @@ services:
     name: n8n-app
     # Use official n8n Docker image instead of building from source
     image: 
-      url: docker.io/n8nio/n8n
+      url: n8nio/n8n
     region: frankfurt  # Change to your preferred region
     plan: free
     autoDeploy: true
