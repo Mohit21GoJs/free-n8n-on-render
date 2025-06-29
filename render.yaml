@@ -5,7 +5,7 @@ services:
   - type: web
     runtime: docker
     name: n8n-app
-    repo: https://github.com/n8n-io/n8n.git
+    image: n8nio/n8n:latest
     region: oregon  # Change to your preferred region
     plan: free
     autoDeploy: true
