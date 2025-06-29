@@ -5,8 +5,9 @@ services:
   - type: web
     runtime: docker
     name: n8n-app
-    image: 
-      url: docker.n8n.io/n8nio/n8n:latest
+    # Dockerfile configuration - will use ./Dockerfile by default
+    # dockerfilePath: ./Dockerfile  # Optional: specify if Dockerfile is in a different location
+    # dockerContext: .              # Optional: specify build context, defaults to repo root
     region: oregon  # Change to your preferred region
     plan: free
     autoDeploy: true
