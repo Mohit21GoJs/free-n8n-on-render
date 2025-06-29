@@ -5,11 +5,10 @@ services:
   - type: web
     runtime: docker
     name: n8n-app
-    # Git configuration
-    repo: https://github.com/render-examples/webdis.git
-    region: oregon  # Change to your preferred region
-    rootDir: webdis # Default: Repo root
-    dockerCommand: ./webdis.sh # Default: Dockerfile CMD
+    # Use official n8n Docker image instead of building from source
+    image: 
+      url: docker.io/n8nio/n8n:latest
+    region: frankfurt  # Change to your preferred region
     plan: free
     autoDeploy: true
     healthCheckPath: /
