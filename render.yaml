@@ -6,17 +6,13 @@ services:
     runtime: docker
     name: n8n-app
     # Git configuration
-    branch: main
-    # Dockerfile configuration - will use ./Dockerfile by default
-    # dockerfilePath: ./Dockerfile  # Optional: specify if Dockerfile is in a different location
-    # dockerContext: .              # Optional: specify build context, defaults to repo root
+    repo: https://github.com/render-examples/webdis.git
     region: oregon  # Change to your preferred region
+    rootDir: webdis # Default: Repo root
+    dockerCommand: ./webdis.sh # Default: Dockerfile CMD
     plan: free
     autoDeploy: true
-    healthCheckPath: /healthz
-    
-    # Docker configuration for n8n
-    dockerCommand: n8n start
+    healthCheckPath: /
     
     # Environment variables for n8n
     envVars:
@@ -89,7 +85,3 @@ databases:
     ipAllowList:
       - source: 0.0.0.0/0
         description: Allow all connections
-    
-    # Optional: Add read replicas for better performance
-    # readReplicas:
-    #   - name: n8n-database-replica 
