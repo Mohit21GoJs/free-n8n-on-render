@@ -7,7 +7,7 @@ services:
     name: n8n-app
     repo: https://github.com/n8n-io/n8n.git
     region: oregon  # Change to your preferred region
-    plan: starter   # Upgrade to standard/pro as needed
+    plan: free
     autoDeploy: true
     healthCheckPath: /healthz
     
@@ -79,7 +79,7 @@ databases:
   - name: n8n-database
     databaseName: n8n_db
     user: n8n_user
-    plan: starter  # Upgrade to basic or standard as needed
+    plan: free
     
     # IP Allow List - Allow connections from anywhere (adjust as needed)
     ipAllowList:
