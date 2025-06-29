@@ -59,11 +59,11 @@ services:
       
       # Optional: Enable metrics
       - key: N8N_METRICS
-        value: true
+        value: "true"
       
       # Optional: Configure user management
       - key: N8N_USER_MANAGEMENT_DISABLED
-        value: false
+        value: "false"
       
       # Log level
       - key: N8N_LOG_LEVEL
