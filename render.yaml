@@ -56,10 +56,12 @@ services:
       # Log level
       - key: N8N_LOG_LEVEL
         value: info
-    
-    # Custom domains (optional - update with your domain)
-    # domains:
-    #   - your-custom-domain.com
+
+      - key: N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS
+        value: "true"
+
+      - key: DB_POSTGRESDB_SSL_REJECT_UNAUTHORIZED
+        value: "false"
 
 # PostgreSQL Database
 databases:
