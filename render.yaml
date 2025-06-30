@@ -17,7 +17,7 @@ services:
       - key: DB_POSTGRESDB_DATABASE
         fromDatabase:
           name: n8n-database
-          property: databaseName
+          property: database
       - key: DB_POSTGRESDB_SCHEMA
         value: public
       - key: DB_POSTGRESDB_HOST
