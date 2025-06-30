@@ -23,9 +23,10 @@ services:
       - key: DB_POSTGRESDB_SCHEMA
         value: public
       - key: DB_POSTGRESDB_HOST
-        fromDatabase:
-          name: n8n-database
-          property: host
+        value: dpg-d1h6k72li9vc73bde2j0-a.oregon-postgres.render.com
+        # fromDatabase:
+        #   name: n8n-database
+        #   property: host
       - key: DB_POSTGRESDB_PORT
         value: 5432
       - key: DB_POSTGRESDB_USER
