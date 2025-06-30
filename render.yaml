@@ -19,7 +19,9 @@ services:
       - key: DB_TYPE
         value: postgresdb
       - key: DB_POSTGRESDB_DATABASE
-        value: n8n_db_vogo
+        fromDatabase:
+          name: n8n-database
+          property: databaseName
       - key: DB_POSTGRESDB_SCHEMA
         value: public
       - key: DB_POSTGRESDB_HOST
