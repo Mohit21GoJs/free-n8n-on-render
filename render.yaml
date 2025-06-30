@@ -27,7 +27,7 @@ services:
           name: n8n-database
           property: host
       - key: DB_POSTGRESDB_PORT
-        value: 6543
+        value: 5432
       - key: DB_POSTGRESDB_USER
         fromDatabase:
           name: n8n-database
