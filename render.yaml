@@ -3,7 +3,7 @@
 services:
   # n8n Web Service
   - type: web
-    runtime: docker
+    runtime: image
     name: n8n-app
     # Use official n8n Docker image instead of building from source
     image: 
