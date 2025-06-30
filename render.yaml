@@ -9,7 +9,7 @@ services:
       url: n8nio/n8n:latest
     region: frankfurt
     plan: free
-    autoDeploy: true
+    autoDeploy: false
     
     envVars:
       - key: DB_TYPE
