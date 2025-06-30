@@ -47,7 +47,7 @@ services:
         value: UTC
         
       - key: WEBHOOK_URL
-        value: https://your-n8n-app.onrender.com  # Update with your actual domain
+        value: https://n8n-app-i8y0.onrender.com  # Update with your actual domain
       
       
       # Log level
