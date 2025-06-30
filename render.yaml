@@ -19,17 +19,13 @@ services:
       - key: DB_TYPE
         value: postgresdb
       - key: DB_POSTGRESDB_DATABASE
-        fromDatabase:
-          name: n8n-database
-          property: database
+        value: postgres
       - key: DB_POSTGRESDB_HOST
         fromDatabase:
           name: n8n-database
           property: host
       - key: DB_POSTGRESDB_PORT
-        fromDatabase:
-          name: n8n-database
-          property: port
+        value: 6543
       - key: DB_POSTGRESDB_USER
         fromDatabase:
           name: n8n-database
@@ -38,32 +34,21 @@ services:
         fromDatabase:
           name: n8n-database
           property: password
+      - key: GENERIC_TIMEZONE
+        value: UTC
+      - key: N8N_ENCRYPTION_KEY
+        value: sD7lFhIIeS
       
       # n8n Configuration
       - key: N8N_HOST
-        value: 0.0.0.0
-      - key: N8N_PORT
-        value: 10000
-      - key: N8N_PROTOCOL
-        value: https
+        value: n8n.onrender.com
+
+      - key: TZ
+        value: UTC
+        
       - key: WEBHOOK_URL
         value: https://your-n8n-app.onrender.com  # Update with your actual domain
       
-      # Security - Generate secure encryption key
-      - key: N8N_ENCRYPTION_KEY
-        generateValue: true
-      
-      # Optional: Set timezone
-      - key: GENERIC_TIMEZONE
-        value: UTC
-      
-      # Optional: Enable metrics
-      - key: N8N_METRICS
-        value: "true"
-      
-      # Optional: Configure user management
-      - key: N8N_USER_MANAGEMENT_DISABLED
-        value: "false"
       
       # Log level
       - key: N8N_LOG_LEVEL
