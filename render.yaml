@@ -9,7 +9,7 @@ services:
       url: n8nio/n8n:latest
     region: frankfurt
     plan: free
-    autoDeploy: false
+    autoDeploy: true
     
     envVars:
       - key: DB_TYPE
@@ -21,10 +21,9 @@ services:
       - key: DB_POSTGRESDB_SCHEMA
         value: public
       - key: DB_POSTGRESDB_HOST
-        value: dpg-d1h6k72li9vc73bde2j0-a.oregon-postgres.render.com
-        # fromDatabase:
-        #   name: n8n-database
-        #   property: host
+        fromDatabase:
+          name: n8n-database
+          property: host
       - key: DB_POSTGRESDB_PORT
         value: 5432
       - key: DB_POSTGRESDB_USER
