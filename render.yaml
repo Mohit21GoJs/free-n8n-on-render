@@ -5,17 +5,13 @@ services:
   - type: web
     runtime: image
     name: n8n-app
-    # Use official n8n Docker image instead of building from source
     image:
       url: n8nio/n8n:latest
-    region: frankfurt  # Change to your preferred region
+    region: frankfurt
     plan: free
     autoDeploy: true
-    #healthCheckPath: /healthz
     
-    # Environment variables for n8n
     envVars:
-      # Database connection
       - key: DB_TYPE
         value: postgresdb
       - key: DB_POSTGRESDB_DATABASE
@@ -71,8 +67,8 @@ databases:
     databaseName: n8n_db
     user: n8n_user
     plan: free
+    region: frankfurt
     
-    # IP Allow List - Allow connections from anywhere (adjust as needed)
     ipAllowList:
       - source: 0.0.0.0/0
         description: Allow all connections
